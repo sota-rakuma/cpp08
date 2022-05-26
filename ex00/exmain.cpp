@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   exmain.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:23:56 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/27 00:35:04 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/05/27 00:45:59 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "easyfind.hpp"
+#include "ex.hpp"
 #include <vector>
 #include <list>
 #include <map>
@@ -24,14 +24,13 @@ int	main(void)
 	int_vec::iterator	last = a.end();
 	int	val = 1;
 
-	for (;first != last; first++, val++)
-	{
-		*first = val;
-	}
+	for (;first != last; first++, val++) { *first = val; }
+
+	typedef EasyFind<int_vec> easy_int;
 
 	try
 	{
-		int_vec::iterator itr = easyfind<int_vec>(a,3);
+		easy_int::t_itr itr = easy_int::easyfind(a,3);
 		std::cout << *itr << std::endl;
 	}
 	catch(const std::exception& e)

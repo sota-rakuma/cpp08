@@ -5,10 +5,18 @@
 #include <iterator>
 #include <stdexcept>
 
-template <typename T>
-typename T::iterator	easyfind(T& container, int num)
+template <class T>
+class EasyFind
 {
-	typename T::iterator res;
+	public:
+		typedef typename T::iterator t_itr;
+		static t_itr	easyfind(T& container, int num);
+};
+
+template <class T>
+typename EasyFind<T>::t_itr EasyFind<T>::easyfind(T& container, int num)
+{
+	t_itr	res;
 
 	res = std::find(container.begin(), container.end(), num);
 	if (res == container.end())

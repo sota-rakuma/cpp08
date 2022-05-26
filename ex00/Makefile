@@ -2,8 +2,7 @@ CXX:=c++
 CXXFLAGS:=-std=c++98 -Wall -Wextra -Werror
 DEBUGFLAGS:=-g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 NAME:=a.out
-SRC:=main.cpp \
-	easyfind.cpp
+SRC:=main.cpp
 OBJ_DIR:=obj
 OBJ:=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 DEP_DIR:=dep
