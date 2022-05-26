@@ -6,11 +6,10 @@
 #include <stdexcept>
 
 template <class T>
-class EasyFind
+struct EasyFind
 {
-	public:
-		typedef typename T::iterator t_itr;
-		static t_itr	easyfind(T& container, int num);
+	typedef typename T::iterator t_itr;
+	static t_itr	easyfind(T& container, int num);
 };
 
 template <class T>
