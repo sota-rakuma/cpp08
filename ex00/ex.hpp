@@ -13,7 +13,7 @@ struct EasyFind
 };
 
 template <class T>
-typename EasyFind<T>::t_itr EasyFind<T>::easyfind(T& container, int num)
+typename EasyFind<T>::t_itr	EasyFind<T>::easyfind(T& container, int num)
 {
 	t_itr	res;
 
