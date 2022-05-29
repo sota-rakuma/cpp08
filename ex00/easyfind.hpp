@@ -22,7 +22,7 @@ const typename T::const_iterator	easyfind(const T& container, int num)
 {
 	typename T::const_iterator res;
 
-	res = std::find(container.cbegin(), container.cend(), num);
+	res = std::find(container.begin(), container.end(), num);
 	std::cout << "const version is called" << std::endl;
 	if (res == container.cend())
 		throw (std::range_error("could not find"));

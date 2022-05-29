@@ -2,10 +2,15 @@ CXX:=c++
 CXXFLAGS:=-std=c++98 -Wall -Wextra -Werror
 DEBUGFLAGS:=-g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 NAME:=a.out
-SRC:=main.cpp
+SRC:=Span.cpp\
+	main.cpp
+#OBJ=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR:=obj
-OBJ:=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+ifdef TEST
+CXXFLAGS+=-DTEST
+endif
 DEP_DIR:=dep
+OBJ:=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 DEP:=$(addprefix $(DEP_DIR)/, $(SRC:.cpp=.d))
 
 all: $(NAME)
