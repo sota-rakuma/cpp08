@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:47:34 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/30 03:07:00 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/05/30 03:50:57 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ class Span
 		~Span();
 		Span&			operator=(const Span&);
 		void			addNumber(int);
+		template <typename T>
+		void			addNumber(typename T::iterator, typename T::iterator);
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
 		#ifdef TEST
@@ -57,5 +59,23 @@ class Span
 		int			getSmaller();
 		#endif
 };
+
+template<typename T>
+void	Span::addNumber(typename T::iterator first, typename T::iterator last)
+{
+	typename T::iterator	tmp = first;
+	unsigned int			size = 0;
+	for (; tmp != last; tmp++)
+	{
+		size++;
+	}
+	if (_size < size)
+	{
+		for (; size != _size; size--, last--) ;
+		_ele.insert(first, last);
+		throw (MaxElements());
+	}
+	_ele.insert(first, last);
+}
 
 #endif /* SPAN_HPP */
