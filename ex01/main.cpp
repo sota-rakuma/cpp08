@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:22:04 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/30 03:14:06 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/05/30 03:51:42 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,23 @@
 #endif
 #include "Span.hpp"
 
+typedef std::vector<int> int_vec;
+
 template<typename T>
-static void	test(unsigned int n, typename T::iterator first, typename T::iterator last)
+static void	test(unsigned int n, typename T::iterator first, typename T::iterator last, bool add_iter)
 {
 	Span sp(n);
 
 	try
 	{
-		for (; first != last; first++)
+		if (add_iter)
+			sp.addNumber<T>(first, last);
+		else
 		{
-			sp.addNumber(*first);
+			for (; first != last; first++)
+			{
+				sp.addNumber(*first);
+			}
 		}
 	}
 	catch(const std::exception& e)
@@ -90,11 +97,10 @@ int main()
 		std::cout << sp.longestSpan() << std::endl;
 	}
 	std::cout << GREEN "test when n == 0" NONE << std::endl;
-	typedef std::vector<int> int_vec;
 	int_vec a(1);
-	test<int_vec>(0, a.begin(), a.end());
+	test<int_vec>(0, a.begin(), a.end(), 0);
 	std::cout << GREEN "test when Span's size is only one" NONE << std::endl;
-	test<int_vec>(1, a.begin(), a.end());
+	test<int_vec>(1, a.begin(), a.end(), 0);
 
 	std::cout << GREEN "test when given from 0 to 10000" NONE << std::endl;
 	int_vec	b(10000);
@@ -102,21 +108,23 @@ int main()
 	{
 		b.at(i - 1) = i;
 	}
-	test<int_vec>(10000, b.begin(), b.end());
+	test<int_vec>(10000, b.begin(), b.end(), 1);
 
 	std::cout << GREEN "test when given from -10000 to 0" NONE << std::endl;
 	for (size_t i = 1; i <= 10000; i++)
 	{
 		b.at(i - 1) = i * (-1);
 	}
-	test<int_vec>(10000, b.begin(), b.end());
+	test<int_vec>(10000, b.begin(), b.end(), 1);
 
-	std::cout << GREEN "test given from INT_MIN to INT_MAX" NONE << std::endl;
-	int_vec	c(3);
+	std::cout << GREEN "test given from INT_MIN to INT_MAX vol.1" NONE << std::endl;
+	int_vec	c(4);
 	c.at(0) = INT_MIN;
-	c.at(1) = INT_MIN;
+	c.at(1) = 0;
 	c.at(2) = INT_MAX;
-	test<int_vec>(3, c.begin(), c.end());
-
+	c.at(3) = INT_MIN;
+	test<int_vec>(3, c.begin(), c.end(), 1);
+	std::cout << GREEN "test given from INT_MIN to INT_MAX vol.2" NONE << std::endl;
+	test<int_vec>(4, c.begin(), c.end(), 1);
 	return (0);
 }

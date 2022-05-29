@@ -38,4 +38,7 @@ int main(void)
 
 	std::cout << std::distance(b.begin(), l_ml) << std::endl;
 	std::cout << std::distance(b.begin(), b.end()) << std::endl;
+
+	int_mlset	d;
+	d.insert(a->begin(), a->end());
 }
