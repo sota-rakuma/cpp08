@@ -24,7 +24,7 @@ const typename T::const_iterator	easyfind(const T& container, int num)
 
 	res = std::find(container.begin(), container.end(), num);
 	std::cout << "const version is called" << std::endl;
-	if (res == container.cend())
+	if (res == container.end())
 		throw (std::range_error("could not find"));
 	return (res);
 }
