@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:44:21 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/31 06:31:35 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/05/31 06:33:58 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,12 @@ int main()
 		a.push_back(100);
 		MutantStack<int>	b(a);
 
-		std::list<int> aa;
-		aa = std::list<int>(a.begin(), a.end());
-		exit(0);
-
-		MutantStack<int, std::list<int> >c(b);
 		std::cout << *(b.begin()) << std::endl;
-		std::cout << *(c.begin()) << std::endl;
 		MutantStack<int>	l;
 		MutantStack<int>	m;
 
 		l.push(5);
 		l.push(17);
-		c = l;
-		std::cout << *(c.begin()) << std::endl;
 		MutantStack<int>::const_iterator	c_it = l.begin();
 		MutantStack<int>::const_iterator	c_ite = l.end();
 		for (;c_it != c_ite; c_it++)

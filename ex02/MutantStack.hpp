@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 15:44:47 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/31 06:31:15 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/05/31 06:33:26 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ class MutantStack : public std::stack<T>
 		MutantStack();
 		MutantStack(const MutantStack&);
 		MutantStack(const Container&);
-		template <class OtherContainer>
-		MutantStack(const OtherContainer&);
 		~MutantStack();
 		MutantStack&	operator=(const MutantStack&);
-		template <class OtherCotainer>
-		MutantStack&	operator=(const MutantStack<T, OtherCotainer>&);
 		iterator				begin();
 		const_iterator			begin() const;
 		reverse_iterator		rbegin();
@@ -62,24 +58,8 @@ MutantStack<T, Container>::MutantStack(const Container& container)
 }
 
 template <typename T, class Container>
-template <class OtherContainer>
-MutantStack<T, Container>::MutantStack(const OtherContainer& other_c)
-: std::stack<T, Container>(Container(other_c.begin(), other_c.end()))
-{
-}
-
-template <typename T, class Container>
 MutantStack<T, Container>::~MutantStack()
 {
-}
-
-template <typename T, class Container>
-template <class OtherContainer>
-MutantStack<T, Container>&
-MutantStack<T, Container>::operator=(const MutantStack<T, OtherContainer>& another)
-{
-	std::stack<T, Container>::operator=(std::stack<T, Container>(Container(another.begin(), another.end())));
-	return (*this);
 }
 
 template <typename T, class Container>
