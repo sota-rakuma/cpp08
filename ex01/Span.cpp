@@ -78,13 +78,11 @@ Span&	Span::operator=(const Span& span)
 	_s_num = span._s_num;
 	#endif
 
-	int_mlset::iterator	first = span._ele.begin();
-	int_mlset::iterator	last = span._ele.end();
-
-	for (;first != last;first++)
+	/*for (;first != last;first++)
 	{
 		_ele.insert(*first);
-	}
+	}*/
+	_ele = span._ele;
 	return (*this);
 }
 
@@ -130,10 +128,7 @@ unsigned int	Span::longestSpan()
 {
 	if (_ele.size() < 2)
 		throw (NotEnoughElements());
-
-	int_mlset::iterator	max = std::max_element(_ele.begin(), _ele.end());
-	int_mlset::iterator	min = std::min_element(_ele.begin(), _ele.end());
-	return (*max - *min);
+	return (*_ele.begin() - *_ele.end());
 }
 
 #ifdef TEST
@@ -151,4 +146,10 @@ int	Span::getSmaller()
 {
 	return (_s_num);
 }
+
+unsigned int	Span::getSize()
+{
+	return (_size);
+}
+
 #endif

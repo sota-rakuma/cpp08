@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:47:34 by srakuma           #+#    #+#             */
-/*   Updated: 2022/06/04 00:07:55 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/06/04 02:27:17 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ class Span
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
 		#ifdef TEST
-		int_mlset&	getEle();
-		int			getLarger();
-		int			getSmaller();
+		int_mlset&		getEle();
+		unsigned int	getSize();
+		int				getLarger();
+		int				getSmaller();
 		#endif
 };
 
@@ -69,10 +70,8 @@ void	Span::addNumber(typename T::iterator first, typename T::iterator last)
 	{
 		size++;
 	}
-	if (_size < size + _ele.size())
+	if (_size < (size + _ele.size()))
 	{
-		for (; size != _size; size--, last--) ;
-		_ele.insert(first, last);
 		throw (MaxElements());
 	}
 	_ele.insert(first, last);

@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:22:04 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/30 03:51:42 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/06/04 01:59:58by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,23 @@ int main()
 	test<int_vec>(3, c.begin(), c.end(), 1);
 	std::cout << GREEN "test given from INT_MIN to INT_MAX vol.2" NONE << std::endl;
 	test<int_vec>(4, c.begin(), c.end(), 1);
+
+	Span	d(5);
+	int_vec	e;
+	e.push_back(1);
+	e.push_back(2);
+	e.push_back(3);
+	try
+	{
+		d.addNumber<int_vec>(e.begin(), e.end());
+		std::cout << GREEN "first addNumber is clear" NONE << std::endl;
+		d.addNumber<int_vec>(e.begin(), e.end());
+		std::cout << GREEN "second addNumber is clear" NONE << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return (0);
 }
