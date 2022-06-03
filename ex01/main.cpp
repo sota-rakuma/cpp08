@@ -20,10 +20,8 @@
 #include <iostream>
 #include <functional>
 #include <vector>
-#ifndef __MACH__
 #include <climits>
 #include <algorithm>
-#endif
 #include "Span.hpp"
 
 typedef std::vector<int> int_vec;
