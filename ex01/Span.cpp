@@ -12,10 +12,8 @@
 
 #include "Span.hpp"
 #include <iterator>
-#ifndef __MACH__
 #include <climits>
 #include <algorithm>
-#endif
 
 Span::NotEnoughElements::NotEnoughElements()
 :_msg("do not have enough more elements")

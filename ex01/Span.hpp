@@ -6,7 +6,7 @@
 /*   By: srakuma <srakuma@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:47:34 by srakuma           #+#    #+#             */
-/*   Updated: 2022/05/30 03:50:57 by srakuma          ###   ########.fr       */
+/*   Updated: 2022/06/04 00:07:55 by srakuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Span::addNumber(typename T::iterator first, typename T::iterator last)
 	{
 		size++;
 	}
-	if (_size < size)
+	if (_size < size + _ele.size())
 	{
 		for (; size != _size; size--, last--) ;
 		_ele.insert(first, last);
