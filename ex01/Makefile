@@ -13,6 +13,8 @@ DEP_DIR:=dep
 OBJ:=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 DEP:=$(addprefix $(DEP_DIR)/, $(SRC:.cpp=.d))
 
+-include $(DEPS)
+
 all: $(NAME)
 
 ifdef DEBUG
