@@ -12,8 +12,6 @@ DEP_DIR:=dep
 OBJ:=$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 DEP:=$(addprefix $(DEP_DIR)/, $(SRC:.cpp=.d))
 
--include $(DEPS)
-
 all: $(NAME)
 
 ifdef DEBUG
@@ -33,6 +31,8 @@ $(DEP_DIR):
 $(OBJ_DIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -MMD -MP -c -o $@ $<
 	@mv $(OBJ_DIR)/*.d $(DEP_DIR)/
+
+-include $(DEPS)
 
 clean:
 	rm -fR $(OBJ_DIR) $(DEP_DIR)
